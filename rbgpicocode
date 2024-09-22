@@ -1,0 +1,61 @@
+#include <Arduino.h>
+
+// Pin definitions for RGB LED
+#define rPin 15  // Red LED pin
+#define gPin 14  // Green LED pin
+#define bPin 13  // Blue LED pin
+
+// Pin definitions for buttons
+#define rBut 10  // Red button pin
+#define gBut 11  // Green button pin
+#define bBut 12  // Blue button pin
+
+int DCr = 0;
+int DCg = 0;
+int DCb = 0;
+
+// Function to initialize PWM on a pin
+void setupPWM(uint pin) {
+    pinMode(pin, OUTPUT);
+    analogWrite(pin, 0);  // Initialize PWM with 0 (LED off)
+}
+
+void setup() {
+    // Initialize serial communication for debugging
+    Serial.begin(9600);
+
+    // Set up RGB LED pins for PWM output
+    setupPWM(rPin);
+    setupPWM(gPin);
+    setupPWM(bPin);
+
+    // Set button pins as input with pull-down resistors
+    pinMode(rBut, INPUT_PULLDOWN);
+    pinMode(gBut, INPUT_PULLDOWN);
+    pinMode(bBut, INPUT_PULLDOWN);
+}
+
+void loop() {
+    // Red button pressed
+    if (digitalRead(rBut) == HIGH) {
+        DCr = (DCr + 25) % 256;
+        analogWrite(rPin, DCr);
+        delay(100);  // Debouncing delay
+    }
+
+    // Green button pressed
+    if (digitalRead(gBut) == HIGH) {
+        DCg = (DCg + 25) % 256;
+        analogWrite(gPin, DCg);
+        delay(100);  // Debouncing delay
+    }
+
+    // Blue button pressed
+    if (digitalRead(bBut) == HIGH) {
+        DCb = (DCb + 25) % 256;
+        analogWrite(bPin, DCb);
+        delay(100);  // Debouncing delay
+    }
+
+    delay(50);  // Small delay to debounce buttons
+}
