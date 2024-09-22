@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -22.2, "left": -64.4, "attrs": {} },
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 35.25, "left": -178.8, "attrs": {} },
+    { "type": "wokwi-rgb-led", "id": "rgb1", "top": -5.6, "left": 135.5, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 81.6,
+      "left": 133.85,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 81.6,
+      "left": 143.45,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 81.6,
+      "left": 114.65,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 93.8,
+      "left": 67.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn2",
+      "top": 93.8,
+      "left": 19.2,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn3",
+      "top": 93.8,
+      "left": -28.8,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r4",
+      "top": 139.2,
+      "left": 18.65,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r5",
+      "top": 139.2,
+      "left": 66.65,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r6",
+      "top": 139.2,
+      "left": -29.35,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "pico:GP15", "bb1:20b.i", "red", [ "h0" ] ],
+    [ "pico:GP14", "bb1:22b.j", "green", [ "h0" ] ],
+    [ "pico:GP13", "bb1:23b.j", "blue", [ "h0" ] ],
+    [ "pico:VBUS", "bb1:bn.4", "yellow", [ "h30" ] ],
+    [ "pico:GND.1", "bb1:bn.2", "black", [ "h0" ] ],
+    [ "pico:3V3_EN", "bb1:bp.1", "red", [ "h39.6", "v86.4" ] ],
+    [ "bb1:2b.i", "bb1:bp.2", "green", [ "v0" ] ],
+    [ "bb1:7b.i", "bb1:bp.5", "green", [ "v0" ] ],
+    [ "bb1:12b.i", "bb1:bp.9", "green", [ "v0" ] ],
+    [ "btn3:1.r", "pico:GP10", "violet", [ "v0" ] ],
+    [ "btn2:1.r", "pico:GP11", "violet", [ "v0", "h-229.6", "v86.4" ] ],
+    [ "btn1:1.r", "pico:GP12", "violet", [ "v96", "h-8.8" ] ],
+    [ "rgb1:R", "bb1:20t.b", "", [ "$bb" ] ],
+    [ "rgb1:COM", "bb1:21t.c", "", [ "$bb" ] ],
+    [ "rgb1:G", "bb1:22t.b", "", [ "$bb" ] ],
+    [ "rgb1:B", "bb1:23t.b", "", [ "$bb" ] ],
+    [ "r1:1", "bb1:22t.d", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:22b.h", "", [ "$bb" ] ],
+    [ "r2:1", "bb1:23t.d", "", [ "$bb" ] ],
+    [ "r2:2", "bb1:23b.h", "", [ "$bb" ] ],
+    [ "r3:1", "bb1:20t.d", "", [ "$bb" ] ],
+    [ "r3:2", "bb1:20b.h", "", [ "$bb" ] ],
+    [ "btn1:1.l", "bb1:12b.f", "", [ "$bb" ] ],
+    [ "btn1:2.l", "bb1:12b.h", "", [ "$bb" ] ],
+    [ "btn1:1.r", "bb1:15b.f", "", [ "$bb" ] ],
+    [ "btn1:2.r", "bb1:15b.h", "", [ "$bb" ] ],
+    [ "btn2:1.l", "bb1:7b.f", "", [ "$bb" ] ],
+    [ "btn2:2.l", "bb1:7b.h", "", [ "$bb" ] ],
+    [ "btn2:1.r", "bb1:10b.f", "", [ "$bb" ] ],
+    [ "btn2:2.r", "bb1:10b.h", "", [ "$bb" ] ],
+    [ "btn3:1.l", "bb1:2b.f", "", [ "$bb" ] ],
+    [ "btn3:2.l", "bb1:2b.h", "", [ "$bb" ] ],
+    [ "btn3:1.r", "bb1:5b.f", "", [ "$bb" ] ],
+    [ "btn3:2.r", "bb1:5b.h", "", [ "$bb" ] ],
+    [ "r4:1", "bb1:10b.h", "", [ "$bb" ] ],
+    [ "r4:2", "bb1:bn.8", "", [ "$bb" ] ],
+    [ "r5:1", "bb1:15b.h", "", [ "$bb" ] ],
+    [ "r5:2", "bb1:bn.12", "", [ "$bb" ] ],
+    [ "r6:1", "bb1:5b.h", "", [ "$bb" ] ],
+    [ "bb1:21t.e", "bb1:bn.17", "red", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
